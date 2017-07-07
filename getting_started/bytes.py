@@ -24,3 +24,8 @@ except TypeError as e:
     e.args[0] == "'bytes' object does not support item assignment"
 else:
     raise Exception
+
+b = bytes('中文', 'utf-8')
+assert str(b, 'utf-8') == '中文'
+assert b.decode('utf-8') == '中文'
+
