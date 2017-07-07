@@ -39,4 +39,16 @@ def foo(*args, sep, end, file):
 kwargs = {'sep' : '', 'end' : '', 'file' : 'fff'}
 foo(1, 2, 3, 4, **kwargs)
 
-
+m = {}
+try:
+    m['c']
+except KeyError as e:
+    e.args[0] == "'c'"
+else:
+    raise Exception
+assert m.get('c') == None
+assert not 'c' in m.keys()
+m['c'] = None
+assert 'c' in m.keys()
+assert m['c'] == None
+assert m.get('c') == None
