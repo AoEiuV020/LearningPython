@@ -52,3 +52,9 @@ m['c'] = None
 assert 'c' in m.keys()
 assert m['c'] == None
 assert m.get('c') == None
+
+m = {}
+m[None] = 8
+assert m[None] == 8
+m[9] = 0
+assert m[9] == 0
