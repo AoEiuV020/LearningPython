@@ -1,0 +1,6 @@
+line = input()
+numList = line.split(' ')
+a = int(numList[0])
+b = int(numList[1])
+ret = a ** b
+print(ret)
