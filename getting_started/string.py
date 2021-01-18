@@ -70,6 +70,7 @@ assert eval('{!a}'.format(zh)) == zh
 assert '{!a}'.format(zh) != repr(zh)
 assert '{0!a}'.format(zh) == '{!a}'.format(zh)
 s = repr(repr(repr(repr(zh))))
+assert f'{s}' == s
 assert '{!s}'.format(s) == s
 assert '{!r}'.format(s) == repr(s)
 
@@ -83,16 +84,22 @@ assert '{age:04d}'.format(**m) == '{:04d}'.format(m['age'])
 
 assert 'a%ss' % 'd' == 'ads'
 assert 'a%ds' % 3 == 'a3s'
+assert 'a%s%ds' % ('d', 3) == 'ad3s'
 
 assert 's' in 'asdf'
 
 s = 'AoEiuV020'
 assert s.lower() == 'aoeiuv020'
 assert s.upper() == 'AOEIUV020'
+assert isinstance(s[0], str)
+assert s[0].lower() == 'a'
 
 assert ' a '.strip() == 'a'
 
 assert '中文'.encode() == b'\xe4\xb8\xad\xe6\x96\x87'
+assert '中文'.encode() == bytes('中文', 'utf8')
+assert '中文'.encode() == bytearray(bytes('中文', 'utf8'))
+assert '中文'.encode() == bytearray('中文', 'utf8')
 
 assert 'asdf'.isalpha()
 assert '1234'.isdigit()
@@ -108,3 +115,5 @@ assert not '¼'.isdecimal()
 assert '¼'.isnumeric()
 
 assert 'a'[0][0][0] is 'a'
+
+assert 'a' < 'b'

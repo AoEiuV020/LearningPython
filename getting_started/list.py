@@ -95,6 +95,9 @@ l = [3, 4]
 l.remove(3)
 assert l == [4]
 l = [3, 4]
+l.pop(1)
+assert l == [3]
+l = [3, 4]
 l[:1] = []
 assert l == [4]
 
@@ -122,7 +125,7 @@ except ValueError as e:
 else:
     raise Exception
 
-# 反直觉，这个pop不是对应push，而是remove,
+# 反直觉，这个pop不是对应push，而是按索引remove,
 l = [1, 2, 3, 4]
 assert l.pop() == 4
 assert l == [1, 2, 3]

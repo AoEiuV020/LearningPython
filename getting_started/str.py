@@ -4,5 +4,8 @@
 assert str(8) == '8'
 assert str([1, 2]) == '[1, 2]'
 assert str({1, 2}) == '{1, 2}'
-assert str({'a': 1,'b': 2}) == "{'a': 1, 'b': 2}"
+assert str({'a': 1, 'b': 2}) == "{'a': 1, 'b': 2}"
 assert str((1,)) == '(1,)'
+assert isinstance('ok', str)
+assert isinstance(list('ok'), list)
+assert isinstance(str(list('ok')), str)

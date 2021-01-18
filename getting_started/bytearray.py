@@ -19,17 +19,19 @@ class bytearray(object)
 
 s = '中文'
 assert bytearray(s, 'utf-8') == \
-    bytearray(bytes(s, 'utf-8'))
+       bytearray(bytes(s, 'utf8'))
+assert bytearray(s, 'utf-8') == \
+       (bytes(s, 'utf8'))
 assert len(bytearray(88)) == 88
 assert len(bytearray(range(88))) == 88
 assert bytearray(9999).__sizeof__() - \
-    bytearray(88).__sizeof__() == 9999 - 88
+       bytearray(88).__sizeof__() == 9999 - 88
 
 assert bytearray([255])[0] == 255
 try:
     bytearray([256])
 except ValueError as e:
-    e.args[0] == "byte must be in range(0, 256)"
+    assert e.args[0] == "byte must be in range(0, 256)"
 else:
     raise Exception
 

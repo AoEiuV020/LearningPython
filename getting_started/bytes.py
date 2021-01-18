@@ -21,7 +21,7 @@ assert b[0] == 0
 try:
     b[0] = 1
 except TypeError as e:
-    e.args[0] == "'bytes' object does not support item assignment"
+    assert e.args[0] == "'bytes' object does not support item assignment"
 else:
     raise Exception
 
