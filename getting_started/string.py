@@ -117,3 +117,6 @@ assert '¼'.isnumeric()
 assert 'a'[0][0][0] is 'a'
 
 assert 'a' < 'b'
+a = 'a 3333 I'.split(' ')
+assert isinstance(a, list)
+assert a[1] == '3333'
