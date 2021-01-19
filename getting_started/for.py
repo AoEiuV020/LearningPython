@@ -31,6 +31,10 @@ try:
     for i, k, v in enumerate(m.items()):
         assert l[i] == m[k] == v
 except ValueError as e:
-    e.args[0] == 'not enough values to unpack (expected 3, got 2)'
+    assert e.args[0] == 'not enough values to unpack (expected 3, got 2)'
 else:
     raise Exception
+
+# 循环节居然可以前置，能代替map了，
+assert list(i * i for i in range(8)) \
+       == list(map(lambda x: x * x, range(8)))
