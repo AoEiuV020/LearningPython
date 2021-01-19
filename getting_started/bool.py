@@ -21,3 +21,7 @@ assert False or True
 assert not False
 assert True or exec('raise Exception')
 assert not (False and exec('raise Exception'))
+assert True & True
+assert not True & False
+assert False | True
+assert not False | False
