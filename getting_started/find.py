@@ -5,3 +5,5 @@ try:
     raise Exception
 except ValueError as e:
     assert e.args[0] == 'substring not found'
+assert 'hello'.find('l') == 2
+assert 'hello'.rfind('l') == 3
