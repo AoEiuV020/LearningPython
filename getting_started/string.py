@@ -81,6 +81,7 @@ assert '{[age]:f}'.format(m) != str(float(m['age']))
 assert '{[age]:f}'.format(m) == '{:f}'.format(m['age'])
 assert '{[age]:f}'.format(m) == '{[age]:.6f}'.format(m)
 assert '{age:04d}'.format(**m) == '{:04d}'.format(m['age'])
+assert '{:s}'.format(str(m)) == f'{m}'
 
 assert 'a%ss' % 'd' == 'ads'
 assert 'a%ds' % 3 == 'a3s'
@@ -120,3 +121,14 @@ assert 'a' < 'b'
 a = 'a 3333 I'.split(' ')
 assert isinstance(a, list)
 assert a[1] == '3333'
+# 默认使用科学计数法，
+assert str(0.000000001) == '1e-09'
+# %f不用科学计数法，但是精度不行，
+assert str('%f' % 0.000000001) == str('{:f}'.format(0.000000001)) == '0.000000'
+assert '%.10f' % 1e-10 == '0.0000000001'
+import decimal
+
+assert format(decimal.getcontext().create_decimal('1e-10'), 'f') \
+       == format(decimal.getcontext().create_decimal(repr(1e-10)), 'f') \
+       == '0.0000000001'
+assert format(decimal.getcontext().create_decimal(1e-10), 'f') == '0.0000000001000000000000000036432197315'
