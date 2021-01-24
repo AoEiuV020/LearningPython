@@ -10,4 +10,5 @@ assert list(filter(lambda x: x, range(8))) \
        == list(range(1, 8))
 
 assert list(filter(lambda x: x.isalpha(), 'AoEiuV020')) \
+       == list(x for x in 'AoEiuV020' if x.isalpha()) \
        == list('AoEiuV')
