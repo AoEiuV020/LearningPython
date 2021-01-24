@@ -22,3 +22,10 @@ else:
 assert list(map(lambda x, y: x + y, range(3), range(3, 6))) == [0 + 3, 1 + 4, 2 + 5]
 # 取最短，
 assert list(map(lambda x, y: x + y, range(3), range(3, 9))) == [0 + 3, 1 + 4, 2 + 5]
+# 反直觉，map只能收集一次，
+arr = map(int, "1234")
+assert sum(arr) == sum(list(map(int, "1234"))) == 1 + 2 + 3 + 4 == 10
+assert sum(arr) == 0
+arr = list(map(int, "1234"))
+assert sum(arr) == sum(list(map(int, "1234"))) == 1 + 2 + 3 + 4 == 10
+assert sum(arr) == 10
