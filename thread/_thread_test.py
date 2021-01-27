@@ -6,7 +6,6 @@ def increase_n(n, delay, x, r):
     time.sleep(delay)
     n[0] += x
     assert n[0] == r
-    print(n[0])
 
 
 n = [2]
