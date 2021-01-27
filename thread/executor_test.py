@@ -3,7 +3,6 @@ from concurrent.futures import ThreadPoolExecutor
 
 
 def increase_n(n, delay, x, r):
-    print(n)
     time.sleep(delay)
     n[0] += x
     assert n[0] == r
