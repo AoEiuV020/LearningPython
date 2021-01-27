@@ -9,7 +9,6 @@ l[1] = 5
 assert l[1] == 5
 assert len(l[1:-1]) == 2
 
-
 # [:]深拷贝，反常识，
 # 修改[:]的元素不会作用到原list,
 # 直接给[:]赋值会作用到原list，当成特殊情况吧，
@@ -42,7 +41,6 @@ tmp_l[:][:] = []
 assert len(tmp_l) == 4
 assert len(l) == 4
 
-
 try:
     l = [1, 2, 3, 4]
     l[8]
@@ -73,14 +71,17 @@ assert [i for i in range(3)] == [0, 1, 2]
 
 assert list((0, 1, 2, 3, 4)) == list(range(5))
 
+
 def com(a):
     return a * a
+
+
 l = list(range(4, -4, -1))
-l.sort(key = com)
+l.sort(key=com)
 assert l == [0, 1, -1, 2, -2, 3, -3, 4]
-l.sort(key = lambda x: -x)
+l.sort(key=lambda x: -x)
 assert l == list(range(4, -4, -1))
-l.sort(key = lambda x: -x, reverse = True)
+l.sort(key=lambda x: -x, reverse=True)
 assert l == list(range(-3, 5, 1))
 
 l = [1, 2]
@@ -146,3 +147,6 @@ except ValueError as e:
     e.args[0] == "attempt to assign sequence of size 0 to extended slice of size 3"
 else:
     raise Exception
+
+l = list(range(9))
+assert l[::2] == [0, 2, 4, 6, 8]
